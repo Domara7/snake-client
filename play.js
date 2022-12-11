@@ -5,4 +5,6 @@ console.log("Connecting ...");
 
 const conn = connect();
 
+//connection has been established
+
 setupInput(conn);

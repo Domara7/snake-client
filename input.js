@@ -1,3 +1,4 @@
+const { mappings } = require("./constants");
 let connection;
 
 const setupInput = function (conn) {
@@ -8,29 +9,16 @@ const setupInput = function (conn) {
   stdin.resume();
   stdin.on("data", handleUserInput);
 }
+const handleUserInput = (key) => {
+  // Short circuit if user does the Ctrl-C key
+  if (key === "\u0003") {
+    return process.exit();
+  }
 
-const handleUserInput = function (key) {
-  if (key === '\u0003') {
-    process.exit();
-  }
-  if (key === 'w') {
-    connection.write("Move: up")
-  }
-  if (key === 'a') {
-    connection.write("Move: left")
-  }
-  if (key === 's') {
-    connection.write("Move: down")
-  }
-  if (key === 'd') {
-    connection.write("Move: right")
-  }
-  if (key === 'g') {
-    connection.write("Say: Howdy")
+  // handles all other key strokes
+  if (mappings[key]) {
+    connection.write(mappings[key]);
   }
 };
-
-
-
 
 module.exports = { setupInput };

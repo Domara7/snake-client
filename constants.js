@@ -1,5 +1,7 @@
 const IP = 'localhost';
 const PORT = '50541';
+const name = 'DOM'
+
 const mappings = {
   w: "Move: up",
   a: "Move: left",
@@ -10,5 +12,6 @@ const mappings = {
 module.exports = {
   IP,
   PORT,
+  name,
   mappings
 };

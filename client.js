@@ -10,10 +10,11 @@ const connect = function () {
   })
   conn.on("connect", () => {
     console.log("You have succesfully connected")
+    // sending message to server to know that you have connected
     conn.write(`Name: ${name}`);
     // Name will be displayed when you join the server
   })
-  // sending message to server to know that you have connected
+
   conn.on("data", (data) => {
     console.log(data);
   })
